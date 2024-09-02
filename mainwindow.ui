@@ -143,13 +143,14 @@
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>4</number>
+          <number>5</number>
          </property>
          <widget class="SignInManager" name="page"/>
          <widget class="SignInRecord" name="page_2"/>
          <widget class="StuInfo" name="page_3"/>
          <widget class="ClassSchedule" name="page_4"/>
          <widget class="LeaveAndMakeup" name="page_5"/>
+         <widget class="Report" name="page_6"/>
         </widget>
        </item>
       </layout>
@@ -198,6 +199,12 @@
    <class>LeaveAndMakeup</class>
    <extends>QWidget</extends>
    <header>leaveandmakeup.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Report</class>
+   <extends>QWidget</extends>
+   <header>report.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

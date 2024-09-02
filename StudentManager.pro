@@ -19,6 +19,7 @@ SOURCES += \
     modifystuinfo.cpp \
     mylistview.cpp \
     newstudent.cpp \
+    report.cpp \
     signinmanager.cpp \
     signinrecord.cpp \
     signinrecordtabledelegate.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     modifystuinfo.h \
     mylistview.h \
     newstudent.h \
+    report.h \
     signinmanager.h \
     signinrecord.h \
     signinrecordtabledelegate.h \
@@ -55,6 +57,7 @@ FORMS += \
     mainwindow.ui \
     modifystuinfo.ui \
     newstudent.ui \
+    report.ui \
     signinmanager.ui \
     signinrecord.ui \
     stuinfo.ui

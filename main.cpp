@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <datetimemanager.h>
 #include <QWidget>
+#include <QBasicTimer>
 Q_DECLARE_METATYPE(std::function<void(QSqlQuery*)>)
 Q_DECLARE_METATYPE(std::function<void(QVector<QSqlQuery*>)>)
 Q_DECLARE_METATYPE(QVector<QSqlQuery*>)
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<std::function<void(QSqlQuery*)>>("std::function<void(QSqlQuery*)>");
     qRegisterMetaType<std::function<void(QVector<QSqlQuery*>)>>("std::function<void(QVector<QSqlQuery*>)>");
     qRegisterMetaType<QVector<QSqlQuery*>>("QVector<QSqlQuery*>");
-    DateTimeManager::init();
+    DateTimeManager::getInstance().init();
     MainWindow::getInstance().show();
     auto stuInfo = MainWindow::getInstance().stuInfo;
     auto signInManager = MainWindow::getInstance().signInManager;
@@ -26,5 +27,6 @@ int main(int argc, char *argv[])
     signInRecord->setStuInfoModel(stuInfo->getStuInfoModel(),stuInfo->getNameClassColumn(),stuInfo->getStuIdColumn());
     classSchedule->setModel(stuInfo->getStuInfoModel(),stuInfo->getNameClassColumn());
     leaveAndMakeUp->setStuInfoModel(stuInfo->getStuInfoModel(),stuInfo->getNameClassColumn(),stuInfo->getStuIdColumn());
-    return a.exec();
+    int ret = a.exec();
+    return ret;
 }

@@ -29,8 +29,7 @@ ClassSchedule::ClassSchedule(QWidget *parent)
     ui->listView_trash->setEnabled(false);
     classTable.resize(7);
     classTableModel.resize(7);
-    auto allClassTimes = DateTimeManager::getAllClassBeginTimes();\
-    qDebug()<<allClassTimes;
+    auto allClassTimes = DateTimeManager::getInstance().getAllClassBeginTimes();
     int classTimeCount = allClassTimes.count();
     for(int i=0;i<7;i++){
         classTable[i].resize(classTimeCount);
@@ -100,7 +99,7 @@ void ClassSchedule::loadData()
             int weekday = q->value("weekday").toInt();
             QTime classTime = q->value("classBeginTime").toTime();
             QString nameClass = q->value("nameClass").toString();
-            int classTimeIndex = DateTimeManager::getClassTimeIndex(classTime);
+            int classTimeIndex = DateTimeManager::getInstance().getClassTimeIndex(classTime);
             if(classTimeIndex<0 || classTimeIndex >=classTableModel[0].count()) continue;
             if(weekday<1 || weekday>7) continue;
             classTableModel[weekday-1][classTimeIndex]->appendRow(new QStandardItem(nameClass));
@@ -246,7 +245,7 @@ void ClassSchedule::submitChange()
         }
         else if(value == 0){}
     }
-    DbManager::writeIns().excuteQuery(sqls,[this](QVector<QSqlQuery*> qs){
+    DbManager::writeIns().excuteQuery(sqls,[this](QVector<QSqlQuery*>){
         emit classScheduleChange();
         changeToNormalMode();
     });

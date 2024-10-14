@@ -8,7 +8,7 @@
 #include <QDebug>
 #include "dbmanager.h"
 #include <QStringList>
-#include <leaveandmakeuptabledelegate.h>
+#include "leaveandmakeuptabledelegate.h"
 #include <QList>
 LeaveAndMakeup::LeaveAndMakeup(QWidget *parent)
     : QWidget(parent)
@@ -18,8 +18,8 @@ LeaveAndMakeup::LeaveAndMakeup(QWidget *parent)
     ui->dateEdit_leave->setDate(QDate::currentDate());
     ui->dateEdit_makeUp->setDate(QDate::currentDate());
     ui->dateEdit_begin->setDate(QDate::currentDate().addMonths(-1));
-    ui->dateEdit_2_end->setDate(QDate::currentDate().addMonths(1));
-    auto allClassTime = DateTimeManager::getAllClassBeginTimes();
+    ui->dateEdit_end->setDate(QDate::currentDate().addMonths(1));
+    auto allClassTime = DateTimeManager::getInstance().getAllClassBeginTimes();
     for(auto classTime:allClassTime){
         ui->comboBox_leave_classTime->addItem(classTime.toString("hh:mm:ss"),classTime);
         ui->comboBox_makeUp_classTime->addItem(classTime.toString("hh:mm:ss"),classTime);
@@ -33,7 +33,7 @@ LeaveAndMakeup::LeaveAndMakeup(QWidget *parent)
     }
     leave_model->setHorizontalHeaderLabels(labels);
     makeUp_model->setHorizontalHeaderLabels(labels);
-    leave_table = ui->tableView_leave;
+    leave_table = ui->tableView_leave_2;
     makeUp_table = ui->tableView_makeUp;
     leave_table->setModel(leave_model);
     makeUp_table->setModel(makeUp_model);
@@ -77,7 +77,7 @@ void LeaveAndMakeup::loadData(WhichTable whichTable)
 {
     QString sql;
     QDate begin = ui->dateEdit_begin->date();
-    QDate end = ui->dateEdit_2_end->date();
+    QDate end = ui->dateEdit_end->date();
     if(whichTable == LEAVE){
         sql ="select name,class,stu_info.stu_id,day,classbeginTime from leave_Record left join stu_info on leave_Record.stu_id = stu_info.stu_id where day between '%1' and '%2';";
     }
@@ -121,6 +121,14 @@ void LeaveAndMakeup::loadData(WhichTable whichTable)
         }
     });
 
+}
+
+void LeaveAndMakeup::on_midNight()
+{
+    ui->dateEdit_leave->setDate(QDate::currentDate());
+    ui->dateEdit_makeUp->setDate(QDate::currentDate());
+    ui->dateEdit_begin->setDate(QDate::currentDate().addMonths(-1));
+    ui->dateEdit_end->setDate(QDate::currentDate().addMonths(1));
 }
 
 void LeaveAndMakeup::on_pushButton_leave_clicked()
@@ -206,8 +214,6 @@ void LeaveAndMakeup::on_deleteButtonClicked(int whichType,int row)
             loadData(whichTable);
         }
     });
-
-
 }
 
 void LeaveAndMakeup::on_pushButton_flash_clicked()

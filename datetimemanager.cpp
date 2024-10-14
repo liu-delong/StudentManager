@@ -1,10 +1,16 @@
 #include "datetimemanager.h"
 #include <QDate>
-#include "timermanager.h"
 #include <QDebug>
+#include "dbmanager.h"
 DateTimeManager::DateTimeManager(QObject *parent)
     : QObject{parent}
 {}
+
+DateTimeManager &DateTimeManager::getInstance()
+{
+    static DateTimeManager instance;
+    return instance;
+}
 
 int DateTimeManager::getTodayWeekLogical()
 {
@@ -14,7 +20,6 @@ int DateTimeManager::getTodayWeekLogical()
 void DateTimeManager::setTodayWeek(int day)
 {
     todayWeek=day;
-    lastUpdateTodayWeekTime = QDateTime::currentDateTime();
 }
 
 
@@ -28,47 +33,56 @@ int DateTimeManager::getClassTimeIndex(QTime classTime)
     return allClassTimes.indexOf(classTime);
 }
 
-QTime DateTimeManager::getMostLikelyClassBeginTimes()
-{
-    auto now = QTime::currentTime();
-    return findClosesTime(allClassTimes,now);
-}
 
 void DateTimeManager::init()
 {
-    TimerManager::ins().registerTask(3600,&DateTimeManager::updateTodayWeek);
     updateTodayWeek();
 }
 
 void DateTimeManager::updateTodayWeek()
 {
-    auto now = QDateTime::currentDateTime();
-    if(now.date() == lastUpdateTodayWeekTime.date()){
-        return;
-    }
-    else{
-        todayWeek = now.date().dayOfWeek();
-        lastUpdateTodayWeekTime = now;
-    }
-}
-
-QTime DateTimeManager::findClosesTime(const QVector<QTime> &times, const QTime &targetTime)
-{
-    QTime closestTime = times.first();
-    int minDiff = qAbs(targetTime.secsTo(closestTime));
-    for(const QTime& time:times){
-        int diff = qAbs(targetTime.secsTo(time));
-        if(diff<minDiff){
-            minDiff = diff;
-            closestTime = time;
+    QString sql  = "select * from TimeAdj where adj_date = current_date();";
+    DbManager::readIns().excuteQuery(sql,[this](QSqlQuery *q){
+        if(q->next()){
+            int day = q->value("weekday").toInt();
+            setTodayWeek(day);
         }
-    }
-    return closestTime;
+        else{
+            setTodayWeek(QDate::currentDate().dayOfWeek());
+        }
+        auto &ins = DateTimeManager::getInstance();
+        emit ins.todayWeekchange(todayWeek);
+    });
+
 }
 
-int DateTimeManager::todayWeek;
+void DateTimeManager::on_MidNight()
+{
+    updateTodayWeek();
+}
 
-QVector<QTime> DateTimeManager::allClassTimes ={QTime::fromString("08:30"),QTime::fromString("10:30"),QTime::fromString("14:30")
-                                                 ,QTime::fromString("16:30"),QTime::fromString("17:00"),QTime::fromString("19:15")};
+void DateTimeManager::sendSignalEveryMidnight()
+{
+    QTime currentTime = QTime::currentTime();
+    QTime midnight(0, 0, 1); // 表示0点
 
-QDateTime DateTimeManager::lastUpdateTodayWeekTime = QDateTime::currentDateTime().addDays(-1);
+    // 计算当前时间到下一个0点的时间差（以毫秒为单位）
+    int msecsToMidnight = currentTime.msecsTo(midnight);
+    if (msecsToMidnight <= 0) {
+        // 如果已经过了0点，那么计算到下一个0点的时间（加一天）
+        msecsToMidnight += 24 * 60 * 60 * 1000; // 一天的毫秒数
+    }
+    qDebug()<<msecsToMidnight/1000/60;
+    firstTimer = new QTimer(this);
+
+    // 创建一个定时器，等待到0点
+    firstTimer->singleShot(2000, [this]() {
+        qDebug()<<"hello";
+        emit midNightArrived();
+            // 重新设置定时器，每天0点触发
+        dailyTimer = new QTimer(this);
+        connect(dailyTimer, &QTimer::timeout, this,&DateTimeManager::midNightArrived);
+        dailyTimer->start(24 * 60 * 60 * 1000);
+    });
+}
+

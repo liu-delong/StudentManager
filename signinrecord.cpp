@@ -169,6 +169,11 @@ void SignInRecord::setStuInfoModel(QStandardItemModel *model, int nameClassColum
     ui->comboBox->setCurrentText("gggggg");
 }
 
+void SignInRecord::on_midNight()
+{
+    ui->dateEdit_2->setDate(QDate::currentDate());
+}
+
 void SignInRecord::on_pushButton_clicked()
 {
     getSignInRecord(true);

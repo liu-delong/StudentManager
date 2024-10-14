@@ -39,6 +39,8 @@ public:
 public slots:
     void loadData(WhichTable whichTable = ALL);
 
+    void on_midNight();
+
 
 private slots:
     void on_pushButton_leave_clicked();

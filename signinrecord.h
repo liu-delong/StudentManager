@@ -30,6 +30,9 @@ public:
     void getSignInRecord(bool force=false);
     void addRow(QMap<QString,QVariant> rowData);
     void setStuInfoModel(QStandardItemModel* model,int nameClassColumn,int stuIdColumn);
+
+public slots:
+    void on_midNight();
 private slots:
     void on_pushButton_clicked();
 
@@ -43,6 +46,9 @@ private slots:
 
     void on_spinBox_valueChanged(int arg1);
 
+    void on_deleteEnsureButtonClicked(int recordId,int row);
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::SignInRecord *ui;
     QTableView *table;
@@ -52,9 +58,7 @@ private:
     int stuInfoStuIdColumn;
     QStandardItemModel *stuInfoModel;
     signInRecordTableDelegate* delegate;
-private slots:
-    void on_deleteEnsureButtonClicked(int recordId,int row);
-    void on_comboBox_currentIndexChanged(int index);
+
 signals:
     void signInRecordDeleted(int recordId,int stu_id);
 };

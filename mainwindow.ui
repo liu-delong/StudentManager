@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1445</width>
-    <height>570</height>
+    <width>1607</width>
+    <height>563</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1300</width>
+    <width>1500</width>
     <height>0</height>
    </size>
   </property>
@@ -92,14 +92,21 @@
           <item>
            <widget class="QPushButton" name="pushButton_classSchedule">
             <property name="text">
-             <string>课程管理</string>
+             <string>课程表</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_7">
             <property name="text">
-             <string>课程表</string>
+             <string>调休管理</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_6">
+            <property name="text">
+             <string>备份还原</string>
             </property>
            </widget>
           </item>
@@ -143,7 +150,7 @@
        <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="currentIndex">
-          <number>5</number>
+          <number>7</number>
          </property>
          <widget class="SignInManager" name="page"/>
          <widget class="SignInRecord" name="page_2"/>
@@ -151,6 +158,8 @@
          <widget class="ClassSchedule" name="page_4"/>
          <widget class="LeaveAndMakeup" name="page_5"/>
          <widget class="Report" name="page_6"/>
+         <widget class="TimeAdjManager" name="page_7"/>
+         <widget class="Backup" name="page_8"/>
         </widget>
        </item>
       </layout>
@@ -163,7 +172,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1445</width>
+     <width>1607</width>
      <height>21</height>
     </rect>
    </property>
@@ -205,6 +214,18 @@
    <class>Report</class>
    <extends>QWidget</extends>
    <header>report.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TimeAdjManager</class>
+   <extends>QWidget</extends>
+   <header>timeadjmanager.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Backup</class>
+   <extends>QWidget</extends>
+   <header>backup.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

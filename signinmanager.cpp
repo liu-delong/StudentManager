@@ -4,12 +4,13 @@
 #include "dbmanager.h"
 #include <QSqlQuery>
 #include <QDate>
-#include <datetimemanager.h>
+#include "datetimemanager.h"
 #include <QVariant>
 #include <QThread>
 #include <qsqlquery.h>
 #include <QBrush>
 #include <QString>
+#include "mainwindow.h"
 SignInManager::SignInManager(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::SignInManager)
@@ -24,7 +25,6 @@ SignInManager::SignInManager(QWidget *parent)
     table->setModel(model);
     table->setItemDelegate(delegate);
     connect(delegate,SIGNAL(buttonClicked(QPushButton*)),this,SLOT(onSignInButtonClick(QPushButton*)));
-    loadAllData();
 }
 
 
@@ -62,7 +62,7 @@ void SignInManager::setHeader()
 void SignInManager::setClassBeginTimeComboBoxItems(int column)
 {
     QMap<QString,QVariant> classBeginTimeComboBoxItems;
-    auto classBeginTime = DateTimeManager::getAllClassBeginTimes();
+    auto classBeginTime = DateTimeManager::getInstance().getAllClassBeginTimes();
     for(auto & time:classBeginTime){
         QString text = time.toString("HH:mm:ss");
         classBeginTimeComboBoxItems[text]=time;
@@ -78,11 +78,9 @@ void SignInManager::fixRowData(int row)
         }
         else if(headerNames[i]=="签到节数"){
             model->setData(model->index(row,i),2);
-            //table->openPersistentEditor(model->index(row,i));
         }
         else if(headerNames[i]=="上课日期"){
             model->setData(model->index(row,i),QDate::currentDate());
-            //table->openPersistentEditor(model->index(row,i));
         }
         else if(headerNames[i]=="姓名"){
             model->item(row,i)->setEditable(false);
@@ -105,9 +103,7 @@ void SignInManager::fixRowData(int row)
         else if(headerNames[i]=="学生id"){
            model->item(row,i)->setEditable(false);
         }
-
         else if(headerNames[i]=="课程开始时间"){
-            //model->setData(model->index(row,i),DateTimeManager::getMostLikelyClassBeginTimes());
             table->openPersistentEditor(model->index(row,i));
         }
     }
@@ -173,7 +169,7 @@ void SignInManager::loadAllData(int weekday,QTime now)
 
 void SignInManager::loadAllData()
 {
-    loadAllData(DateTimeManager::getTodayWeekLogical(),QTime::currentTime());
+    loadAllData(DateTimeManager::getInstance().getTodayWeekLogical(),QTime::currentTime());
 }
 
 

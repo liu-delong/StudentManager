@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>temp</class>
+ <widget class="QWidget" name="temp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>664</width>
+    <height>465</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame_2">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>127</y>
+     <width>646</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>36</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>时间段</string>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="dateEdit_begin">
+    <property name="geometry">
+     <rect>
+      <x>52</x>
+      <y>11</y>
+      <width>88</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>245</x>
+      <y>10</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="dateEdit_2_end">
+    <property name="geometry">
+     <rect>
+      <x>256</x>
+      <y>11</y>
+      <width>88</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_flash">
+    <property name="geometry">
+     <rect>
+      <x>449</x>
+      <y>10</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>刷新</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_3">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>203</y>
+     <width>646</width>
+     <height>253</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QFrame" name="frame_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>276</width>
+      <height>233</height>
+     </rect>
+    </property>
+    <property name="accessibleName">
+     <string/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>请假名单</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableView" name="tableView_leave"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QFrame" name="frame_7">
+    <property name="geometry">
+     <rect>
+      <x>326</x>
+      <y>10</y>
+      <width>276</width>
+      <height>233</height>
+     </rect>
+    </property>
+    <property name="accessibleName">
+     <string/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>48</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>补课名单</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QTableView" name="tableView_makeUp">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>31</y>
+       <width>256</width>
+       <height>192</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>646</width>
+     <height>112</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QFrame" name="frame_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>369</width>
+      <height>43</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>24</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>请假</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_leave_name">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>11</y>
+       <width>69</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit_leave">
+     <property name="geometry">
+      <rect>
+       <x>115</x>
+       <y>11</y>
+       <width>88</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_leave_classTime">
+     <property name="geometry">
+      <rect>
+       <x>209</x>
+       <y>11</y>
+       <width>69</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_leave">
+     <property name="geometry">
+      <rect>
+       <x>284</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>请假</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>59</y>
+      <width>369</width>
+      <height>43</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>24</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>补课</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_makeUp_name">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>11</y>
+       <width>69</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit_makeUp">
+     <property name="geometry">
+      <rect>
+       <x>115</x>
+       <y>11</y>
+       <width>88</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_makeUp_classTime">
+     <property name="geometry">
+      <rect>
+       <x>209</x>
+       <y>11</y>
+       <width>69</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_makeUp">
+     <property name="geometry">
+      <rect>
+       <x>284</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>补课</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_8">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>646</width>
+      <height>112</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="frame_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>369</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>24</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>请假</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_leave_name_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>11</y>
+        <width>69</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit_leave_2">
+      <property name="geometry">
+       <rect>
+        <x>115</x>
+        <y>11</y>
+        <width>88</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_leave_classTime_2">
+      <property name="geometry">
+       <rect>
+        <x>209</x>
+        <y>11</y>
+        <width>69</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_leave_2">
+      <property name="geometry">
+       <rect>
+        <x>284</x>
+        <y>10</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>请假</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>59</y>
+       <width>369</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>24</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>补课</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_makeUp_name_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>11</y>
+        <width>69</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit_makeUp_2">
+      <property name="geometry">
+       <rect>
+        <x>115</x>
+        <y>11</y>
+        <width>88</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_makeUp_classTime_2">
+      <property name="geometry">
+       <rect>
+        <x>209</x>
+        <y>11</y>
+        <width>69</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_makeUp_2">
+      <property name="geometry">
+       <rect>
+        <x>284</x>
+        <y>10</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>补课</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_11">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>118</y>
+      <width>646</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>36</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>时间段</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit_begin_2">
+     <property name="geometry">
+      <rect>
+       <x>52</x>
+       <y>11</y>
+       <width>88</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>245</x>
+       <y>10</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit_2_end_2">
+     <property name="geometry">
+      <rect>
+       <x>256</x>
+       <y>11</y>
+       <width>88</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_flash_2">
+     <property name="geometry">
+      <rect>
+       <x>449</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>刷新</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_12">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>194</y>
+      <width>646</width>
+      <height>253</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="frame_13">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>276</width>
+       <height>233</height>
+      </rect>
+     </property>
+     <property name="accessibleName">
+      <string/>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>48</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>请假名单</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView_leave_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>31</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_14">
+     <property name="geometry">
+      <rect>
+       <x>326</x>
+       <y>10</y>
+       <width>276</width>
+       <height>233</height>
+      </rect>
+     </property>
+     <property name="accessibleName">
+      <string/>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>48</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>补课名单</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView_makeUp_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>31</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

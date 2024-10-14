@@ -23,7 +23,7 @@ void ModifyStuInfo::setData(int stu_id,QString name, QString course, int total, 
     ui->label_msg->setText(QString("备注(")+msg+")->");
     ui->lineEdit_name->setText(name);
     ui->lineEdit_course->setText(course);
-    ui->lineEdit_total->setText(QString::number(total));
+    ui->spinBox_total->setValue(total);
     ui->lineEdit_price->setText(QString::number(price));
     ui->lineEdit_introducer->setText(introducer);
     ui->dateTimeEdit_payTime->setDateTime(payTime);
@@ -46,7 +46,7 @@ void ModifyStuInfo::setModifyStuInfoResult(int type, QString errorCode)
         ui->label_hint->setText("修改成功");
         auto name = ui->lineEdit_name->text();
         auto course = ui->lineEdit_course->text();
-        auto total = ui->lineEdit_total->text().toInt();
+        auto total = ui->spinBox_total->text().toInt();
         auto price = ui->lineEdit_price->text().toDouble();
         auto introducer = ui->lineEdit_introducer->text();
         auto payTime = ui->dateTimeEdit_payTime->dateTime();
@@ -58,7 +58,7 @@ void ModifyStuInfo::setModifyStuInfoResult(int type, QString errorCode)
     ui->lineEdit_name->setEnabled(true);
     ui->lineEdit_course->setEnabled(true);
     ui->lineEdit_price->setEnabled(true);
-    ui->lineEdit_total->setEnabled(true);
+    ui->spinBox_total->setEnabled(true);
     ui->lineEdit_introducer->setEnabled(true);
     ui->lineEdit_msg->setEnabled(true);
     ui->dateTimeEdit_beginTime->setEnabled(true);
@@ -83,14 +83,14 @@ void ModifyStuInfo::on_pushButton_clicked()
     ui->lineEdit_name->setEnabled(false);
     ui->lineEdit_course->setEnabled(false);
     ui->lineEdit_price->setEnabled(false);
-    ui->lineEdit_total->setEnabled(false);
+    ui->spinBox_total->setEnabled(false);
     ui->lineEdit_introducer->setEnabled(false);
     ui->lineEdit_msg->setEnabled(false);
     ui->dateTimeEdit_beginTime->setEnabled(false);
     ui->dateTimeEdit_payTime->setEnabled(false);
     auto name = ui->lineEdit_name->text();
     auto course = ui->lineEdit_course->text();
-    auto total = ui->lineEdit_total->text().toInt();
+    auto total = ui->spinBox_total->text().toInt();
     auto price = ui->lineEdit_price->text().toDouble();
     auto introducer = ui->lineEdit_introducer->text();
     auto payTime = ui->dateTimeEdit_payTime->dateTime();

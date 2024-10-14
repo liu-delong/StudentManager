@@ -9,7 +9,6 @@ NewStudent::NewStudent(QWidget *parent)
     , ui(new Ui::NewStudent)
 {
     ui->setupUi(this);
-    ui->lineEdit_total->setValidator(new QIntValidator(0,999999));
     ui->lineEdit_price->setValidator(new QDoubleValidator());
     ui->dateTimeEdit_beginTime->setDateTime(QDateTime::currentDateTime());
     ui->dateTimeEdit_payTime->setDateTime(QDateTime::currentDateTime());
@@ -44,7 +43,7 @@ void NewStudent::on_pushButton_clicked()
 {
     auto name = ui->lineEdit_name->text();
     auto course = ui->lineEdit_course->text();
-    auto total =ui->lineEdit_total->text().toInt();
+    auto total =ui->spinBox_total->text().toInt();
     auto price = ui->lineEdit_price->text().toDouble();
     auto introducer = ui->lineEdit_introducer->text();
     auto payTime = ui->dateTimeEdit_payTime->dateTime();
